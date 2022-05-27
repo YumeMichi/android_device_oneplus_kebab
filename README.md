@@ -18,13 +18,24 @@ and then paste the following
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-<remote name="github"
-	fetch="https://github.com/" />
+  <remove-project name="platform/external/erofs-utils" />
+  <project path="external/erofs-utils" name="platform/external/erofs-utils" remote="aosp" revision="master" />
 
-<project path="device/oneplus/kebab"
-	name="YumeMichi/android_device_oneplus_kebab"
-	remote="github"
-	revision="android-12.1" />
+  <remove-project name="android_bootable_recovery" />
+  <project path="bootable/recovery" name="YumeMichi/android_bootable_recovery" remote="github" revision="android-12.1" />
+
+  <remove-project name="android_build" />
+  <project path="build/make" name="YumeMichi/android_build" remote="github" revision="android-12.1">
+    <copyfile src="core/root.mk" dest="Makefile"/>
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
+    <linkfile src="core" dest="build/core"/>
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh"/>
+    <linkfile src="target" dest="build/target"/>
+    <linkfile src="tools" dest="build/tools"/>
+  </project>
+
+  <project path="device/oneplus/kebab" name="YumeMichi/android_device_oneplus_kebab" remote="github" revision="android-12.1" />
 </manifest>
 ```
 You might need to pick few patches from gerrit.twrp.me to get some stuff working.
