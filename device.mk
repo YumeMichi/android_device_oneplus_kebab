@@ -1,5 +1,7 @@
 # Inherit from common AOSP config
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Inherit from virtual AB OTA config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)

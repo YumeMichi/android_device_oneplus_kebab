@@ -8,7 +8,7 @@ Setup repo tool from here https://source.android.com/setup/develop#installing-re
 Sync TWRP manifest:
 
 ```
-repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
+repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
 
 ```
 
@@ -22,9 +22,9 @@ and then paste the following
 	fetch="https://github.com/" />
 
 <project path="device/oneplus/kebab"
-	name="TeamWin/android_device_oneplus_kebab"
+	name="YumeMichi/android_device_oneplus_kebab"
 	remote="github"
-	revision="android-11" />
+	revision="android-12.1" />
 </manifest>
 ```
 You might need to pick few patches from gerrit.twrp.me to get some stuff working.

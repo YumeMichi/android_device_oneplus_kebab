@@ -23,6 +23,10 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
+
 DEVICE_PATH := device/oneplus/kebab
 
 # Architecture
