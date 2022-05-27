@@ -18,7 +18,21 @@ and then paste the following
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <project path="device/oneplus/lemonades" name="ApexLegend007/twrp_device_oneplus_lemonades" remote="github" revision="android-12.1-oplus" />
+  <remove-project name="platform/external/erofs-utils" />
+  <project path="external/erofs-utils" name="platform/external/erofs-utils" remote="aosp" revision="75d73335d25d52afd6a09c116207cd09bece16ab" />
+
+  <remove-project name="android_build" />
+  <project path="build/make" name="YumeMichi/android_build" remote="github" revision="android-12.1-erofs">
+    <copyfile src="core/root.mk" dest="Makefile"/>
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
+    <linkfile src="core" dest="build/core"/>
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh"/>
+    <linkfile src="target" dest="build/target"/>
+    <linkfile src="tools" dest="build/tools"/>
+  </project>
+
+  <project path="device/oneplus/lemonades" name="YumeMichi/twrp_device_oneplus_lemonades" remote="github" revision="android-12.1-oplus-erofs" />
 </manifest>
 ```
 You might need to pick few patches from gerrit.twrp.me to get some stuff working.
@@ -32,7 +46,7 @@ repo sync -j$(nproc --all)
 To build, execute this command:
 
 ```
-. build/envsetup.sh; export ALLOW_MISSING_DEPENDENCIES=true; export LC_ALL=C; lunch twrp_lemonades-eng; make -j$(nproc --all) adbd recoveryimage
+. build/envsetup.sh; export ALLOW_MISSING_DEPENDENCIES=true; export LC_ALL=C; lunch twrp_lemonades-eng; mka recoveryimage
 ```
 
 To test it:
@@ -45,7 +59,7 @@ fastboot boot out/target/product/lemonades/recovery.img
 fastboot flash recovery recovery.img
 ```
 
-Kernel: https://github.com/LineageOS/android_kernel_oneplus_sm8250
+Kernel: https://github.com/YumeMichi/kernel_oneplus_sm8250
 
 ##### Credits
 - The-Incognito For Recovery Trees of Oneplus 8T
