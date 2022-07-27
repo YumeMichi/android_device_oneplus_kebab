@@ -197,7 +197,7 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpcrecpp.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
 
-#TWRP TESTING GERRIT STUFF 60 FPS TWRP
+#TWRP FRAMERATE
 TW_FRAMERATE := 60
 
 # TWRP Debug Flags
@@ -208,6 +208,3 @@ TARGET_RECOVERY_DEVICE_MODULES += debuggerd
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
 BOARD_RAMDISK_USE_LZMA := true
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
-
-#Obsoleted Board Command Kernel Line in case of oplus based twrp
-#firmware_class.path=/vendor/firmware_mnt/image \
