@@ -18,23 +18,6 @@ and then paste the following
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remove-project name="platform/external/erofs-utils" />
-  <project path="external/erofs-utils" name="platform/external/erofs-utils" remote="aosp" revision="master" />
-
-  <remove-project name="android_bootable_recovery" />
-  <project path="bootable/recovery" name="ApexLegend007/android_bootable_recovery" remote="github" revision="android-12.1" />
-
-  <remove-project name="android_build" />
-  <project path="build/make" name="ApexLegend007/android_build" remote="github" revision="android-12.1">
-    <copyfile src="core/root.mk" dest="Makefile"/>
-    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
-    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
-    <linkfile src="core" dest="build/core"/>
-    <linkfile src="envsetup.sh" dest="build/envsetup.sh"/>
-    <linkfile src="target" dest="build/target"/>
-    <linkfile src="tools" dest="build/tools"/>
-  </project>
-
   <project path="device/oneplus/kebab" name="ApexLegend007/twrp_device_oneplus_lemonades" remote="github" revision="android-12.1" />
 </manifest>
 ```
